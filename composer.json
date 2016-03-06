@@ -1,0 +1,13 @@
+{
+    "name": "fedor108/onpbx",
+    "description": "onpbx api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fedor108",
+            "email": "fedor108@gmail.com"
+        }
+    ],
+    "require": {}
+}
