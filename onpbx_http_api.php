@@ -11,7 +11,7 @@ function onpbx_get_secret_key($domain, $apikey, $new = false)
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     $res = json_decode(curl_exec($ch), true);
 
     if ($res) {
@@ -55,7 +55,7 @@ function onpbx_api_query($secret_key, $key_id, $url, $post = array(), $opt = arr
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     $res = json_decode(curl_exec($ch), true);
 
     if ($res) {
