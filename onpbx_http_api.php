@@ -17,7 +17,7 @@ function onpbx_get_secret_key($domain, $apikey, $new = false)
     if ($res) {
         return $res;
     } else {
-        return false;
+        return curl_error($ch);
     }
 }
 
@@ -61,6 +61,6 @@ function onpbx_api_query($secret_key, $key_id, $url, $post = array(), $opt = arr
     if ($res) {
         return $res;
     } else {
-        return false;
+        return curl_error($ch);
     }
 }
