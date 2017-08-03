@@ -6,7 +6,7 @@ function onpbx_get_secret_key($domain, $apikey, $new = false)
         $data['new'] ='true';
     }
 
-    $ch = curl_init('http://api.onlinepbx.ru/'.$domain.'/auth.json');
+    $ch = curl_init('https://api.onlinepbx.ru/'.$domain.'/auth.json');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
     curl_setopt($ch, CURLOPT_POST, true);
@@ -43,13 +43,7 @@ function onpbx_api_query($secret_key, $key_id, $url, $post = array(), $opt = arr
     $signature = base64_encode(hash_hmac('sha1', $method . "\n" . $content_md5 . "\n" . $content_type . "\n" . $date . "\n" . $url . "\n", $secret_key, false));
     $headers = array('Date: ' . $date, 'Accept: application/json', 'Content-Type: ' . $content_type, 'x-pbx-authentication: ' . $key_id . ':' . $signature, 'Content-MD5: ' . $content_md5);
 
-    if (isset($opt['secure']) && $opt['secure']) {
-        $proto = 'https';
-    } else {
-        $proto = 'http';
-    }
-
-    $ch = curl_init($proto . '://' . $url);
+    $ch = curl_init('https://' . $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
     curl_setopt($ch, CURLOPT_POST, true);
